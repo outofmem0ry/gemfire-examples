@@ -35,5 +35,11 @@ wan/server-*/
 *.rej
 *.orig
 
+# Added by Shubham
+dev
+**/dev
+target
+**/target
+
 
 

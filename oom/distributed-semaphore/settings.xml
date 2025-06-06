@@ -1,0 +1,9 @@
+<settings>
+    <servers>
+        <server>
+            <id>gemfire-release-repo</id>
+            <username>test@domain</username>
+            <password>password-or-token</password>
+        </server>
+    </servers>
+</settings>
