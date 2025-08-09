@@ -1,5 +1,5 @@
 connect \
---locator=192.168.0.201[10334] \
+--locator=$LOCATOR_HOST[10334] \
 --security-properties-file=gfsh/gemfire.properties
 
 # Create a simple region for the probe
