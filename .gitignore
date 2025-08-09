@@ -41,5 +41,5 @@ dev
 target
 **/target
 **/settings.xml
-
+**/.vscode
 
