@@ -12,15 +12,14 @@
 ## Quick start
 
 ```bash
-# Create a test region
-gfsh -e "connect" -e "run --file=gfsh/setup-region.gfsh"
-
-# End-to-end GemFire client probe
-export LOCATOR_HOST="192.168.0.201"
+export LOCATOR_HOST="192.168.0.102"
 export KEYSTORE="$HOME/oomgf/trusted.keystore"
 export TRUSTSTORE="$HOME/oomgf/trusted.keystore"
 export KEY="oomProbeKey"
 export VALUE="8"
+
+# Create a test region
+gfsh -e "run --file=gfsh/setup-region.gfsh"
 
 ./scripts/run-gemfire-probe.sh
 ```
