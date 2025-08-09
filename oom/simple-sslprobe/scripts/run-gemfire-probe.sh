@@ -16,7 +16,7 @@ set -euox pipefail
 : "${CIPHERS:=}"  # e.g., TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 # ----------------------------------------
 
-mvn -q -DskipTests clean package --settings $HOME/settings.xml
+mvn -DskipTests clean package --settings $HOME/settings.xml
 
 # Uncomment to include TLS debug output
 # export JAVA_TOOL_OPTIONS="-Djavax.net.debug=ssl" 
