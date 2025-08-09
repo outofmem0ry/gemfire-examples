@@ -40,6 +40,6 @@ dev
 **/dev
 target
 **/target
-
+**/settings.xml
 
 

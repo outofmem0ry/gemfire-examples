@@ -1,0 +1,12 @@
+connect \
+--locator=192.168.0.201[10334] \
+--security-properties-file=gfsh/gemfire.properties
+
+# Create a simple region for the probe
+create region --name=oom --type=PARTITION --redundant-copies=1
+
+# Seed sample entries (optional)
+put --region=/oom --key='A100' --value=100
+put --region=/oom --key='A200' --value=200
+
+get --key='A100' --region=/oom
