@@ -1,6 +1,10 @@
-connect \
---locator=$LOCATOR_HOST[10334] \
---security-properties-file=gfsh/gemfire.properties
+#!/usr/bin/env bash
+set -euox pipefail
+
+# ---- Edit these or pass as env vars ----
+: "${LOCATOR_HOST:=192.168.0.201}"
+
+connect --locator=$LOCATOR_HOST[10334] --security-properties-file=gfsh/gemfire.properties
 
 # Create a simple region for the probe
 create region --name=oom --type=PARTITION --redundant-copies=1
