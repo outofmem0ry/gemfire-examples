@@ -18,8 +18,22 @@ export TRUSTSTORE="$HOME/oomgf/trusted.keystore"
 export KEY="oomProbeKey"
 export VALUE="8"
 
+cat > gfsh/gemfire.properties << EOF
+ssl-enabled-components=all
+ssl-keystore=$HOME/oomgf/trusted.keystore
+ssl-keystore-password=password
+ssl-truststore=$HOME/oomgf/trusted.keystore
+ssl-truststore-password=password
+ssl-ciphers=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+ssl-endpoint-identification-enabled=false
+ssl-truststore-type=JKS
+ssl-keystore-type=JKS
+ssl-protocols=any
+EOF
+
 # Create a test region
-gfsh -e "run --file=gfsh/setup-region.gfsh"
+gfsh -e "connect --locator=192.168.0.102[10334] --security-properties-file=gfsh/gemfire.properties" \
+-e "run --file=gfsh/setup-region.gfsh"
 
 ./scripts/run-gemfire-probe.sh
 ```
@@ -27,14 +41,4 @@ gfsh -e "run --file=gfsh/setup-region.gfsh"
 ## gfsh helper
 
 `gfsh/setup-region.gfsh` creates a simple PARTITION region named `/oom` and seeds a few entries.
-If your `gfsh` is not already SSL-enabled via `gemfire.properties`, pass the same `-Dgemfire.ssl-*` system properties you use for the GemFire probe, e.g.:
 
-```bash
-gfsh \
---J=-Dgemfire.ssl-enabled-components=all \
---J=-Dgemfire.ssl-keystore=$HOME/oomgf/trusted.keystore \
---J=-Dgemfire.ssl-keystore-password=password \
---J=-Dgemfire.ssl-truststore=$HOME/oomgf/trusted.keystore \
---J=-Dgemfire.ssl-truststore-password=password \
--e "run --file=gfsh/setup-region.gfsh"
-```
