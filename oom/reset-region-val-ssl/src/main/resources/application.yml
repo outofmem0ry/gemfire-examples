@@ -1,0 +1,20 @@
+spring:
+    application:
+        name: "reset-region-val-ssl"
+server:
+    port: 8080
+gemfire:
+    locator:
+        host: Y7W2N1VH77         # <— change to your locator host/IP
+        port: 10334
+    region:
+        name: oom
+    ssl:
+        enabled: true
+        enabled-components: all
+        keystore: /Users/ss030208/oomgf/trusted.keystore
+        keystorePassword: password
+        truststore: /Users/ss030208/oomgf/trusted.keystore
+        truststorePassword: password
+        protocols: TLSv1.2
+seed.count: 10  # Key names K1..K10
